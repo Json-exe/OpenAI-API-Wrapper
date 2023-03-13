@@ -12,15 +12,16 @@ using ToastNotifications.Messages;
 
 namespace OpenAI_API_Wrapper.Pages;
 
-public partial class ChatGPTMessanger : Page
+public partial class ChatGptMessanger : Page
 {
     private readonly SystemHandler _systemHandler = SystemHandler.Instance;
     private static readonly Logger Log = LogManager.GetCurrentClassLogger();
     private readonly List<string> _chatHistory = new();
 
-    public ChatGPTMessanger()
+    public ChatGptMessanger()
     {
         InitializeComponent();
+        _systemHandler.ChatGptMessenger = this;
     }
     
     private void DisableControls()

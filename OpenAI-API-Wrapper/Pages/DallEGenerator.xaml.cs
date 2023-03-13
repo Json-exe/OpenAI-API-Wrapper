@@ -19,6 +19,7 @@ public partial class DallEGenerator : Page
     {
         InitializeComponent();
         ImageSize.SelectedItem = ImageSize.Items[0];
+        _systemHandler.DallEGen = this;
     }
     
     private void DisableControls()

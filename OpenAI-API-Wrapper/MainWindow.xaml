@@ -25,6 +25,12 @@
                         <TextBlock Foreground="White" TextAlignment="Center" FontSize="10" TextWrapping="Wrap">Chat-GPT</TextBlock>
                     </StackPanel>
                 </Button>
+                <Button Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" Click="NavigateWhisper_OnClick">
+                    <StackPanel Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Kind="Audio" Foreground="White" Height="30" Width="30" />
+                        <TextBlock Foreground="White" TextAlignment="Center" FontSize="10" TextWrapping="Wrap">Whisper</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Button Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" Click="NavigateSettings_OnClick">
                     <StackPanel Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <materialDesign:PackIcon HorizontalAlignment="Center" Kind="Settings" Foreground="White" Height="30" Width="30" />

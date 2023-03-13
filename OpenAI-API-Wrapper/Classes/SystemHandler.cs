@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using NLog;
+using OpenAI_API_Wrapper.Pages;
 using OpenAI.GPT3;
 using OpenAI.GPT3.Managers;
 using ToastNotifications;
@@ -28,6 +29,9 @@ public sealed class SystemHandler
     
     public OpenAIService? OpenAiService { get; set; }
     private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+    public ChatGptMessanger? ChatGptMessenger;
+    public DallEGenerator? DallEGen;
+    public Whisper? Whisper;
 
     public readonly Notifier Notifier = new(cfg =>
     {
