@@ -1,0 +1,30 @@
+﻿<Page x:Class="OpenAI_API_Wrapper.Pages.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:OpenAI_API_Wrapper.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800" Background="#222831"
+      Title="Settings">
+    
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <materialDesign:Card Padding="15" MaxWidth="450">
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" FontSize="15" TextAlignment="Center" Foreground="White">Please insert your API-Key from OpenAI here to use this Application!</TextBlock>
+                    <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
+                        To do this, visit this site: https://platform.openai.com/account/api-keys
+                        Login with you account and click "Create new Secret Key", then copy it and paste it in here:
+                    </TextBlock>
+                    <TextBox x:Name="ApiToken" Style="{DynamicResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="API-Key" MinWidth="250" Foreground="White"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
+                        Your token is being stored locally on this machine!
+                    </TextBlock>
+                    <Button Margin="0,8,0,0" Click="Save_OnClick">Save</Button>
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+    </Grid>
+</Page>

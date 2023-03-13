@@ -1,0 +1,63 @@
+﻿<Page x:Class="OpenAI_API_Wrapper.Pages.DallEGenerator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:OpenAI_API_Wrapper.Pages"
+      x:Name="Self"
+      mc:Ignorable="d"
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="DallEGenerator" Background="#222831">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" MinWidth="450" Margin="0,5,0,0">
+            <TextBlock FontSize="20" Foreground="White" TextWrapping="Wrap" TextAlignment="Center">Enter a Prompt, select how many images should be generated, select the Resolution and click generate!</TextBlock>
+            <TextBox x:Name="Prompt" FontSize="17" Margin="0,15,0,0" materialDesign:HintAssist.Hint="Enter a Prompt"
+                     Foreground="White" HorizontalContentAlignment="Center" />
+            <WrapPanel HorizontalAlignment="Center">
+                <ComboBox Foreground="White" x:Name="ImageSize"
+                          materialDesign:HintAssist.Hint="Image-Size" MinWidth="150" Padding="8" Margin="0,8,0,0"
+                          Style="{DynamicResource MaterialDesignOutlinedComboBox}">
+                    <ComboBoxItem
+                        Content="256x256" />
+                    <ComboBoxItem
+                        Content="512x512" />
+                    <ComboBoxItem
+                        Content="1024x1024" />
+                </ComboBox>
+                <ComboBox Foreground="White" x:Name="ImageCount"
+                          materialDesign:HintAssist.Hint="Image-Count" MinWidth="150" Padding="8" Margin="5,8,0,0"
+                          Style="{DynamicResource MaterialDesignOutlinedComboBox}">
+                    <ComboBoxItem
+                        Content="1" />
+                    <ComboBoxItem
+                        Content="2" />
+                    <ComboBoxItem
+                        Content="3" />
+                    <ComboBoxItem
+                        Content="4" />
+                    <ComboBoxItem
+                        Content="5" />
+                    <ComboBoxItem
+                        Content="6" />
+                    <ComboBoxItem
+                        Content="7" />
+                </ComboBox>
+            </WrapPanel>
+            <Button x:Name="GenerateButton" Margin="0,8,0,0" HorizontalAlignment="Center" Click="GenerateImage_OnClick"
+                    IsEnabled="{Binding ElementName=_loading}">
+                GENERATE
+            </Button>
+            <Separator Margin="0,15,0,0" Foreground="White" BorderBrush="White" BorderThickness="2" />
+            <ProgressBar x:Name="ImagesLoading" Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                         Visibility="Collapsed" Width="50" Height="50" IsIndeterminate="True" Margin="0,15,0,0">
+            </ProgressBar>
+            <ScrollViewer Height="380" Margin="0,15,0,0" VerticalScrollBarVisibility="Auto">
+                <WrapPanel x:Name="ResultHolder" HorizontalAlignment="Center">
+                    <!-- <Image x:Name="ResultImage" Visibility="Collapsed" Width="200" Height="200" /> -->
+                </WrapPanel>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Page>

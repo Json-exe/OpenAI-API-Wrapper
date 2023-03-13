@@ -1,0 +1,24 @@
+﻿<Page x:Class="OpenAI_API_Wrapper.Pages.ChatGPTMessanger"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:OpenAI_API_Wrapper.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ChatGPTMessenger" Background="#222831">
+    
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,15,10,90">
+            <StackPanel x:Name="ChatBox"/>
+        </ScrollViewer>
+        <WrapPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="auto" Margin="0,0,0,5">
+            <TextBox x:Name="ChatInput" Style="{DynamicResource MaterialDesignOutlinedTextBox}" TextWrapping="Wrap" MinWidth="650" FontSize="15" materialDesign:HintAssist.Hint="Type something..." 
+                     Foreground="White" MaxHeight="100" MinLines="5" MaxLength="2000"/>
+            <Button x:Name="SendMessage" Click="SendMessage_OnClick" Style="{DynamicResource MaterialDesignOutlinedButton}" BorderBrush="LawnGreen" ToolTip="Send" Margin="8,0,0,0">
+                <materialDesign:PackIcon Kind="Send" Foreground="White"/>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Page>
