@@ -50,7 +50,7 @@ public partial class ChatGptMessanger : Page
         {
             Messages = messages,
             Model = Models.ChatGpt3_5Turbo,
-            MaxTokens = 500
+            MaxTokens = Properties.Settings.Default.ChatGPTTokens
         });
         if (completionResult.Successful)
         {

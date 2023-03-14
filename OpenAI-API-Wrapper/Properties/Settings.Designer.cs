@@ -34,5 +34,17 @@ namespace OpenAI_API_Wrapper.Properties {
                 this["APIKEY"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int ChatGPTTokens {
+            get {
+                return ((int)(this["ChatGPTTokens"]));
+            }
+            set {
+                this["ChatGPTTokens"] = value;
+            }
+        }
     }
 }

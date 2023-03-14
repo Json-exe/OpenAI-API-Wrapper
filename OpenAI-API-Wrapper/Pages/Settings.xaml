@@ -22,6 +22,12 @@
                     <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
                         Your token is being stored locally on this machine!
                     </TextBlock>
+                    <Separator Margin="0,8,0,8"/>
+                    <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
+                        Enter how many tokens you want to use for the GPT Chatbot.
+                        100 tokens ~= 75 words | 1K tokens = $0.002
+                    </TextBlock>
+                    <TextBox x:Name="ChatGptTokens" Style="{DynamicResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="Tokens" MinWidth="250" Foreground="White"/>
                     <Button Margin="0,8,0,0" Click="Save_OnClick">Save</Button>
                 </StackPanel>
             </materialDesign:Card>
