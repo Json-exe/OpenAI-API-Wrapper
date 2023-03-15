@@ -7,7 +7,7 @@
         x:Name="Self"
         xmlns:local="clr-namespace:OpenAI_API_Wrapper"
         mc:Ignorable="d"
-        Title="OpenAI-API-Wrapper" MinHeight="650" MinWidth="800" Background="#222831" Loaded="MainWindow_OnLoaded">
+        Title="OpenAI-API-Wrapper" MinHeight="650" MinWidth="800" Background="#222831" Loaded="MainWindow_OnLoaded" Closing="MainWindow_OnClosing">
 
     <Grid>
         <materialDesign:Card MinHeight="{Binding Path=ActualHeight, ElementName=Self}" Width="70"
