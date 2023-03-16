@@ -9,6 +9,7 @@ using OpenAI_API_Wrapper.Classes;
 using OpenAI.GPT3.ObjectModels;
 using OpenAI.GPT3.ObjectModels.RequestModels;
 using ToastNotifications.Messages;
+using CommunityToolkit.Common;
 
 namespace OpenAI_API_Wrapper.Pages;
 
@@ -24,13 +25,16 @@ public partial class Chat : Page
         _chatClass = chatClass;
         foreach (var chatMessage in _chatClass.ChatHistory)
         {
-            ChatBox.Children.Add(new TextBlock()
+            ChatBox.Children.Add(new TextBox()
             {
                 Text = chatMessage,
                 Margin = new Thickness(0, 0, 0, 8),
                 TextWrapping = TextWrapping.Wrap,
                 Foreground = Brushes.White,
-                FontSize = 15
+                BorderThickness = new Thickness(0),
+                IsReadOnly = true,
+                FontSize = 15,
+                IsHitTestVisible = true
             });
             ChatBox.Children.Add(new Separator());
         }
@@ -111,13 +115,16 @@ public partial class Chat : Page
         if (string.IsNullOrWhiteSpace(message)) return;
         // Add the message to the chat history
         _chatClass.ChatHistory.Add(message);
-        ChatBox.Children.Add(new TextBlock()
+        ChatBox.Children.Add(new TextBox()
         {
             Text = message,
             Margin = new Thickness(0, 0, 0, 8),
             TextWrapping = TextWrapping.Wrap,
             Foreground = Brushes.White,
-            FontSize = 15
+            BorderThickness = new Thickness(0),
+            IsReadOnly = true,
+            FontSize = 15,
+            IsHitTestVisible = true
         });
         // Clear the text box
         ChatInput.Clear();
@@ -126,13 +133,16 @@ public partial class Chat : Page
         ChatBox.Children.Clear();
         foreach (var chatMessage in _chatClass.ChatHistory)
         {
-            ChatBox.Children.Add(new TextBlock()
+            ChatBox.Children.Add(new TextBox()
             {
                 Text = chatMessage,
                 Margin = new Thickness(0, 0, 0, 8),
                 TextWrapping = TextWrapping.Wrap,
                 Foreground = Brushes.White,
-                FontSize = 15
+                BorderThickness = new Thickness(0),
+                IsReadOnly = true,
+                FontSize = 15,
+                IsHitTestVisible = true
             });
             ChatBox.Children.Add(new Separator());
         }

@@ -60,10 +60,16 @@ public partial class ChatGptMessanger : Page
 
     private void NewChat_OnClick(object sender, RoutedEventArgs e)
     {
+        var guid = Guid.NewGuid();
+        while (_systemHandler.Chats.Any(x => x.ChatIdentifier == guid))
+        {
+            guid = Guid.NewGuid();
+        }
+        
         var chatClass = new ChatClass()
         {
             Title = $"Chat-{ChatHolder.Children.Count + 1}",
-            ChatIdentifier = Guid.NewGuid(),
+            ChatIdentifier = guid,
             ChatHistory = new List<string>()
         };
         _systemHandler.Chats.Add(chatClass);
