@@ -95,7 +95,7 @@ public sealed class SystemHandler
         var connection = GetDatabaseConnection();
         var command = new SQLiteCommand("DELETE FROM ChatClass", connection);
         await command.ExecuteNonQueryAsync();
-        foreach (var chat in Chats.Where(chat => string.Join(';', chat.ChatHistory).Length <= 20000))
+        foreach (var chat in Chats.Where(chat => chat.ChatHistory.Count >= 1))
         {
             command = new SQLiteCommand("INSERT INTO ChatClass (ChatHistory, ChatID) VALUES (@ChatHistory, @ChatID)", connection);
             command.Parameters.AddWithValue("@ChatID", chat.ChatIdentifier.ToString());

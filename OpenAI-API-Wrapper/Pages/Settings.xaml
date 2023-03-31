@@ -7,29 +7,43 @@
       xmlns:local="clr-namespace:OpenAI_API_Wrapper.Pages"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800" Background="#222831"
-      Title="Settings">
-    
+      Title="Settings" Loaded="Settings_OnLoaded">
+
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <materialDesign:Card Padding="15" MaxWidth="450">
-                <StackPanel>
-                    <TextBlock TextWrapping="Wrap" FontSize="15" TextAlignment="Center" Foreground="White">Please insert your API-Key from OpenAI here to use this Application!</TextBlock>
-                    <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
-                        To do this, visit this site: https://platform.openai.com/account/api-keys
-                        Login with you account and click "Create new Secret Key", then copy it and paste it in here:
-                    </TextBlock>
-                    <TextBox x:Name="ApiToken" Style="{DynamicResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="API-Key" MinWidth="250" Foreground="White"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
-                        Your token is being stored locally on this machine!
-                    </TextBlock>
-                    <Separator Margin="0,8,0,8"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White" Margin="0,8,0,8">
-                        Enter how many tokens you want to use for the GPT Chatbot.
-                        100 tokens ~= 75 words | 1K tokens = $0.002
-                    </TextBlock>
-                    <TextBox x:Name="ChatGptTokens" Style="{DynamicResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="Tokens" MinWidth="250" Foreground="White"/>
-                    <Button Margin="0,8,0,0" Click="Save_OnClick">Save</Button>
-                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" FontSize="15" TextAlignment="Center" Foreground="White">Please insert your API-Key from OpenAI here to use this Application!</TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White"
+                                   Margin="0,8,0,8">
+                            To do this, visit this site: https://platform.openai.com/account/api-keys
+                            Login with you account and click "Create new Secret Key", then copy it and paste it in here:
+                        </TextBlock>
+                        <TextBox x:Name="ApiToken" Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                                 materialDesign:HintAssist.Hint="API-Key" MinWidth="250" Foreground="White" />
+                        <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White"
+                                   Margin="0,8,0,8">
+                            Your token is being stored locally on this machine!
+                        </TextBlock>
+                        <Separator Margin="0,8,0,8" />
+                        <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White"
+                                   Margin="0,8,0,8">
+                            Enter how many tokens you want to allow the chatbot to use for awnsers.
+                            100 tokens ~= 75 words | 1K tokens = $0.002
+                        </TextBlock>
+                        <TextBox x:Name="ChatGptTokens" Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                                 materialDesign:HintAssist.Hint="Tokens" MinWidth="250" Foreground="White" />
+                        <Separator Margin="0,8,0,8" />
+                        <TextBlock TextWrapping="Wrap" FontSize="13" TextAlignment="Center" Foreground="White"
+                                   Margin="0,8,0,8">
+                            Please select what GPT-Model you want to use for chatting:
+                        </TextBlock>
+                        <ComboBox x:Name="ChatGptModels" Style="{DynamicResource MaterialDesignOutlinedComboBox}"
+                                  materialDesign:HintAssist.Hint="Model" MinWidth="250" Foreground="White"></ComboBox>
+                        <Button Margin="0,8,0,0" Click="Save_OnClick">Save</Button>
+                    </StackPanel>
+                </ScrollViewer>
             </materialDesign:Card>
         </StackPanel>
     </Grid>

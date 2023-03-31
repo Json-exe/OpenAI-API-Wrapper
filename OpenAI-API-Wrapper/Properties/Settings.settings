@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OpenAI_API_Wrapper.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
@@ -8,5 +8,9 @@
     <Setting Name="ChatGPTTokens" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">500</Value>
     </Setting>
+    <Setting Name="ChatGPTModel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gpt-3.5-turbo</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
+

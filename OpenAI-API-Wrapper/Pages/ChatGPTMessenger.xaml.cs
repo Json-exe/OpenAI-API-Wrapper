@@ -20,6 +20,7 @@ public partial class ChatGptMessanger : Page
     {
         InitializeComponent();
         _systemHandler.ChatGptMessenger = this;
+
         var connection = _systemHandler.GetDatabaseConnection();
         var command = new SQLiteCommand("SELECT * FROM ChatClass", connection);
         var reader = command.ExecuteReader();

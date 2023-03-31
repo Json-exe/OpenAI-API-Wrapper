@@ -9,7 +9,6 @@ using OpenAI_API_Wrapper.Classes;
 using OpenAI.GPT3.ObjectModels;
 using OpenAI.GPT3.ObjectModels.RequestModels;
 using ToastNotifications.Messages;
-using CommunityToolkit.Common;
 
 namespace OpenAI_API_Wrapper.Pages;
 
@@ -18,6 +17,7 @@ public partial class Chat : Page
     private readonly SystemHandler _systemHandler = SystemHandler.Instance;
     private static readonly Logger Log = LogManager.GetCurrentClassLogger();
     private readonly ChatClass _chatClass;
+    private bool _chatBlocked;
     
     public Chat(ChatClass chatClass)
     {
@@ -48,6 +48,7 @@ public partial class Chat : Page
     
     private void EnableControls()
     {
+        if (_chatBlocked) return;
         SendMessage.IsEnabled = true;
         ChatInput.IsEnabled = true;
     }
@@ -65,19 +66,24 @@ public partial class Chat : Page
         var completionResult = await _systemHandler.OpenAiService!.CreateCompletion(new ChatCompletionCreateRequest()
         {
             Messages = messages,
-            Model = Models.ChatGpt3_5Turbo,
+            Model = Properties.Settings.Default.ChatGPTModel,
             MaxTokens = Properties.Settings.Default.ChatGPTTokens
         });
         if (completionResult.Successful)
         {
-            // Add the AI's message to the chat history
+            var tokens = completionResult.Usage.TotalTokens;
+            switch (tokens)
+            {
+                case >= 3500 and < 4092:
+                    _systemHandler.Notifier.ShowWarning($"The chat history is reaching token limit! Chats above this limit cannot be continued! Remaining tokens: {4092 - tokens}");
+                    break;
+                case > 4092:
+                    _systemHandler.Notifier.ShowError("The chat history has reached the token limit! Please create a new chat!");
+                    _chatBlocked = true;
+                    return;
+            }
             _chatClass.ChatHistory.Add(completionResult.Choices.First().Message.Content);
             Log.Debug("AI answered successfully. Response: {0}", completionResult.Choices.First().Message.Content);
-            if (string.Join(';', _chatClass.ChatHistory).Length > 15000)
-            {
-                var availableSavingSpace = 20000 - string.Join(';', _chatClass.ChatHistory).Length;
-                _systemHandler.Notifier.ShowWarning($"The chat history is reaching saving limit! Chats above this limit cannot be saved! Remaining space: {availableSavingSpace} characters");
-            }
         }
         else
         {
@@ -92,6 +98,7 @@ public partial class Chat : Page
                 Log.Error("Error while asking the AI: {0}", completionResult.Error);
                 MessageBox.Show("Error while asking the AI: " + completionResult.Error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            _chatClass.ChatHistory.RemoveAt(_chatClass.ChatHistory.Count - 1);
         }
     }
     

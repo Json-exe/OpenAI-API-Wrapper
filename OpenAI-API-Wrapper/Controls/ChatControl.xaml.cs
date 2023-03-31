@@ -29,18 +29,14 @@ public partial class ChatControl : UserControl
     {
         if (MessageBox.Show("Are you sure you want to delete this chat?", "Delete chat", MessageBoxButton.YesNo,
                 MessageBoxImage.Question) != MessageBoxResult.Yes) return;
-        // Delete the chat from the systemhandler
         _systemHandler.Chats.Remove(_systemHandler.Chats.First(x => x.ChatIdentifier == ChatId));
-        // Delete the chat from the chatholder
         _systemHandler.ChatGptMessenger?.ChatHolder.Children.Remove(this);
         if (_systemHandler.ChatGptMessenger?.ChatHolder.Children.Count > 0)
         {
-            // Navigate the user to the first chat in the chatholder
             _systemHandler.ChatGptMessenger?.ChatFrame.NavigationService.Navigate(new Chat(_systemHandler.Chats.First()));
         }
         else
         {
-            // Create a new chat
             var chatClass = new ChatClass()
             {
                 Title = $"Chat-{_systemHandler.ChatGptMessenger?.ChatHolder.Children.Count + 1}",

@@ -48,7 +48,6 @@ public partial class DallEGenerator : Page
             _systemHandler.Notifier.ShowWarning("OpenAI API Key is not set! Please set it in the settings page!");
             return;
         }
-        // Check if something is inside the prompt text box
         if (string.IsNullOrEmpty(Prompt.Text))
         {
             MessageBox.Show("Please enter a prompt!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -65,7 +64,6 @@ public partial class DallEGenerator : Page
         });
         if (imageResult.Successful)
         {
-            // Create a new Image foreach result and add it to the wrap panel
             foreach (var image in imageResult.Results)
             {
                 var imageControl = new Image
@@ -75,7 +73,6 @@ public partial class DallEGenerator : Page
                     Height = 250,
                     Margin = new Thickness(5)
                 };
-                // Each image needs a context menu to copy the image url
                 var contextMenu = new ContextMenu();
                 var copyUrl = new MenuItem
                 {
